@@ -1,0 +1,1110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #1a1a1a;
+  background-image: url('assets/images/bg.png');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+/* Шапка */
+.header {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(44, 44, 44, 0.95);
+  border-bottom: 3px solid #ff6b00;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  min-width: 120px; /* Минимальная ширина для логотипа */
+}
+
+.logo img {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  display: block; /* Убедимся, что изображение отображается как блок */
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+.nav-list {
+  display: flex;
+  gap: 40px;
+  list-style: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li {
+  list-style: none !important;
+}
+
+.nav-list a {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-list a:hover {
+  color: #ff6b00;
+}
+
+.nav-list a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff6b00;
+  transition: width 0.3s;
+}
+
+.nav-list a:hover::after {
+  width: 100%;
+}
+
+.cart-icon {
+  position: relative;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.cart-icon:hover {
+  transform: scale(1.1);
+}
+
+.cart-counter {
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  background: #ff6b00;
+  color: #000;
+  padding: 3px 8px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+/* Основные секции */
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Центрирование всех основных секций */
+.centered-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Форма бронирования */
+.booking-form {
+  background: rgba(44, 44, 44, 0.9);
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 8px 32px rgba(9, 9, 9, 0.3);
+  
+}
+
+.booking-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.booking-form input {
+  padding: 15px;
+  font-size: 16px;
+  border: 2px solid #ff6b00;
+  background: #333;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.booking-form button {
+  background: #ff6b00;
+  color: #000;
+  padding: 15px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.booking-form button:hover {
+  background: #ff5500;
+  transform: scale(1.05);
+}
+
+/* Расписание */
+.matches-list {
+  background: rgba(44, 44, 44, 0.9);
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 800px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.match {
+  background: #333;
+  padding: 20px;
+  margin: 15px 0;
+  border-left: 4px solid #ff6b00;
+  border-radius: 6px;
+}
+
+.match.error {
+  background: rgba(255, 0, 0, 0.1);
+  border-left: 4px solid #ff0000;
+  color: #ff6b6b;
+}
+
+/* Меню */
+.menu-section {
+  width: 100%;
+  align-items: stretch;
+}
+
+.menu-category {
+  background: rgba(44, 44, 44, 0.9);
+  margin: 20px auto;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #333;
+  cursor: pointer;
+}
+
+.menu-header h3 {
+  color: #ff6b00;
+  font-size: 24px;
+}
+
+.toggle-icon {
+  color: #ff6b00;
+  transition: 0.3s;
+}
+
+.menu-items {
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.menu-item {
+  padding: 20px;
+  border-bottom: 1px solid #444;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-item h4 {
+  /* existing styles */
+}
+
+.price-and-button {
+  display: flex; /* Используем flexbox для выравнивания цены и кнопки */
+  align-items: center;
+  gap: 15px; /* Расстояние между ценой и кнопкой */
+}
+
+.menu-item p {
+  margin: 0; /* Убираем стандартные отступы параграфа */
+}
+
+.add-to-cart {
+  background: #ff6b00;
+  color: #000;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.add-to-cart:hover {
+  transform: scale(1.1);
+}
+
+/* Акция */
+.promo-section {
+  background: rgba(255, 107, 0, 0.8);
+  color: #000;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.promo-banner {
+  padding: 25px 0;
+  animation: pulse 1.5s infinite;
+}
+
+.promo-formula {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Подвал */
+.footer {
+  width: 100%;
+  background: rgba(44, 44, 44, 0.95);
+  margin-top: auto;
+  padding: 60px 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  text-align: center;
+  flex: 0 1 300px;
+}
+
+.footer-column h3 {
+  color: #ff6b00;
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.social-links a {
+  color: #ffffff;
+  font-size: 24px;
+  transition: 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #ff6b00e6;
+  transform: scale(1.2);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .centered-block {
+    padding: 30px 15px;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .header {
+    padding: 15px 20px;
+  }
+
+  .logo img {
+    height: 50px; /* Уменьшаем размер логотипа на мобильных */
+  }
+
+  .nav-list {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: #2c2c2c;
+    flex-direction: column;
+    padding: 80px 20px;
+    transition: 0.3s;
+  }
+
+  .nav-list.active {
+    right: 0;
+  }
+
+  .burger-menu {
+    display: flex;
+  }
+
+  .burger-menu span {
+    display: block;
+    width: 28px;
+    height: 4px;
+    background: #fff;
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  .matches-list,
+  .menu-category {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .footer-container {
+    gap: 40px;
+    padding: 0 20px;
+  }
+
+  .nav-list a {
+    font-size: 20px; /* Увеличиваем размер шрифта на мобильных для лучшей читаемости */
+  }
+}
+
+.burger-menu {
+  display: none;
+}
+
+.burger-menu span {
+  display: block;
+  width: 28px;
+  height: 4px;
+  background: #fff;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.league-section {
+  margin-bottom: 2rem;
+  background: #f0f0f0;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.league-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.league-header:hover {
+  background: #e0e0e0;
+}
+
+.league-header h3 {
+  color: #333;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.toggle-icon {
+  color: #666;
+  font-size: 0.8rem;
+  transition: transform 0.3s;
+}
+
+.league-section.collapsed .toggle-icon {
+  transform: rotate(-90deg);
+}
+
+.matches-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.league-section:not(.collapsed) .matches-container {
+  margin-top: 1rem;
+}
+
+.match-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #e8e8e8;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+  color: #000;
+}
+
+.match-item:hover {
+  background: #d8d8d8;
+}
+
+.match-info {
+  flex: 1;
+}
+
+.teams {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #000;
+}
+
+.match-details {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #000;
+}
+
+.match-status {
+  text-align: right;
+  min-width: 100px;
+}
+
+.status {
+  display: block;
+  font-size: 0.8rem;
+  color: #000;
+  margin-bottom: 0.25rem;
+}
+
+.score {
+  font-weight: 500;
+  color: #000;
+}
+
+.venue {
+  color: #000;
+  font-style: italic;
+}
+
+.error-message {
+  color: #d32f2f;
+  padding: 1rem;
+  background: #ffebee;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+/* Корзина */
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1001;
+  display: none; /* Скрыто по умолчанию */
+}
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px; /* Скрыто справа */
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  background: #2c2c2c; /* Цвет фона как у шапки */
+  z-index: 1002;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  transition: right 0.3s ease-in-out;
+  display: flex; /* Используем flexbox для расположения header, list, footer */
+  flex-direction: column;
+}
+
+.cart-sidebar.open {
+  right: 0; /* Открываем */
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #333; /* Немного темнее, чем фон сайдбара */
+  border-bottom: 1px solid #ff6b00;
+}
+
+.cart-header h2 {
+  color: #ff6b00;
+  margin: 0;
+}
+
+.close-cart {
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.cart-items-list {
+  flex-grow: 1; /* Занимает все доступное пространство */
+  padding: 20px;
+  overflow-y: auto; /* Добавляем скролл, если товаров много */
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #444;
+  color: #fff;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.item-info {
+  flex-grow: 1;
+}
+
+.item-name {
+  font-weight: bold;
+}
+
+.item-details {
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+.item-quantity,
+.item-price {
+  margin-left: 15px;
+}
+
+.remove-item {
+  background: none;
+  border: none;
+  color: #ff6b00;
+  cursor: pointer;
+  font-size: 1.2em;
+  margin-left: 15px;
+}
+
+.cart-footer {
+  padding: 20px;
+  background: #333;
+  border-top: 1px solid #ff6b00;
+}
+
+.cart-total {
+  text-align: right;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #ff6b00;
+  margin-bottom: 15px;
+}
+
+.total-price {
+  margin-left: 10px;
+}
+
+.checkout-button {
+  width: 100%;
+  padding: 15px;
+  background: #ff6b00;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.checkout-button:hover {
+  background: #ff5500;
+}
+
+/* Адаптивность для корзины */
+@media (max-width: 480px) {
+  .cart-sidebar {
+    width: 100%;
+    max-width: none; /* На маленьких экранах занимает всю ширину */
+    right: -100%;
+  }
+
+  .cart-sidebar.open {
+    right: 0;
+  }
+}
+
+/* Модальное окно бронирования */
+.booking-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1003; /* Выше корзины */
+  display: none; /* Скрыто по умолчанию */
+  justify-content: center; /* Центрируем модальное окно по горизонтали */
+  align-items: center; /* Центрируем модальное окно по вертикали */
+}
+
+.booking-modal {
+  position: fixed; /* Убедимся, что позиционирование фиксировано относительно viewport */
+  top: 50%; /* Сдвигаем верхний край на 50% высоты экрана */
+  left: 50%; /* Сдвигаем левый край на 50% ширины экрана */
+  transform: translate(-50%, -50%); /* Сдвигаем элемент назад на половину его ширины и высоты */
+  background: rgba(44, 44, 44, 0.95); /* Фон как у шапки и меню */
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  width: 90%;
+  max-width: 500px;
+  z-index: 1004; /* Выше оверлея */
+  display: none; /* Скрыто по умолчанию */
+  flex-direction: column; /* Элементы внутри flex */
+  color: #fff; /* Белый текст */
+}
+
+.booking-modal.open {
+  display: flex; /* Отображаем модальное окно при открытии */
+}
+
+.booking-modal-overlay.active {
+    display: flex; /* Отображаем оверлей при открытии */
+}
+
+.booking-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #333; /* Немного темнее фон заголовка */
+  border-bottom: 1px solid #ff6b00;
+}
+
+.booking-modal-header h2 {
+  color: #ff6b00;
+  margin: 0;
+  font-size: 24px;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.booking-modal-body {
+  padding: 20px;
+}
+
+.booking-modal-body form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.booking-modal-body .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #ff6b00;
+}
+
+.booking-modal-body .form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ff6b00;
+  background: #333;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.booking-modal-body .submit-booking-info {
+  background: #ff6b00;
+  color: #000;
+  padding: 15px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s ease;
+  font-size: 16px;
+}
+
+.booking-modal-body .submit-booking-info:hover {
+  background: #ff5500;
+  transform: scale(1.02); /* Небольшое увеличение */
+}
+
+/* Адаптивность для модального окна */
+@media (max-width: 480px) {
+  .booking-modal {
+    width: 95%;
+  }
+}
+
+/* Кастомное окно подтверждения */
+.confirmation-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1005; /* Выше модального окна бронирования */
+  display: none; /* Скрыто по умолчанию */
+  justify-content: center; /* Центрируем модальное окно по горизонтали */
+  align-items: center; /* Центрируем модальное окно по вертикали */
+}
+
+.confirmation-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(44, 44, 44, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  width: 90%;
+  max-width: 400px; /* Немного меньше, чем окно бронирования */
+  z-index: 1006; /* Выше оверлея */
+  display: none; /* Скрыто по умолчанию */
+  flex-direction: column;
+  color: #fff;
+  text-align: center; /* Центрируем текст внутри */
+}
+
+.confirmation-modal.open {
+  display: flex;
+}
+
+.confirmation-modal-overlay.active {
+    display: flex;
+}
+
+.confirmation-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px; /* Меньше паддинг, чем у бронирования */
+  background: #333;
+  border-bottom: 1px solid #ff6b00;
+}
+
+.confirmation-modal-header h2 {
+  color: #ff6b00;
+  margin: 0;
+  font-size: 20px; /* Меньше размер шрифта */
+}
+
+.close-confirmation-modal {
+  background: none;
+  border: none;
+  font-size: 24px; /* Меньше размер крестика */
+  color: #fff;
+  cursor: pointer;
+}
+
+.confirmation-modal-body {
+  padding: 20px;
+}
+
+.confirmation-modal-body p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.confirmation-modal-body button {
+  background: #ff6b00;
+  color: #000;
+  padding: 10px 20px; /* Меньше паддинг */
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 16px;
+}
+
+.confirmation-modal-body button:hover {
+  background: #ff5500;
+}
+
+/* Адаптивность для окна подтверждения */
+@media (max-width: 480px) {
+  .confirmation-modal {
+    width: 95%;
+  }
+}
+
+/* Модальное окно деталей заказа */
+.order-details-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1007; /* Выше других модальных окон */
+  display: none; /* Скрыто по умолчанию */
+  justify-content: center;
+  align-items: center;
+}
+
+.order-details-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(44, 44, 44, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  width: 90%;
+  max-width: 500px; /* Размер как у окна бронирования */
+  z-index: 1008; /* Выше оверлея */
+  display: none; /* Скрыто по умолчанию */
+  flex-direction: column;
+  color: #fff;
+}
+
+.order-details-modal.open {
+  display: flex;
+}
+
+.order-details-modal-overlay.active {
+    display: flex;
+}
+
+.order-details-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px; /* Паддинг как у окна бронирования */
+  background: #333;
+  border-bottom: 1px solid #ff6b00;
+}
+
+.order-details-modal-header h2 {
+  color: #ff6b00;
+  margin: 0;
+  font-size: 24px; /* Размер шрифта как у окна бронирования */
+}
+
+.close-order-details-modal {
+  background: none;
+  border: none;
+  font-size: 30px; /* Размер крестика как у окна бронирования */
+  color: #fff;
+  cursor: pointer;
+}
+
+.order-details-modal-body {
+  padding: 20px;
+}
+
+.order-details-modal-body form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.order-details-modal-body .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #ff6b00;
+}
+
+.order-details-modal-body .form-group input[type="text"],
+.order-details-modal-body .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ff6b00;
+  background: #333;
+  color: #fff;
+  border-radius: 6px;
+  resize: vertical; /* Разрешаем изменение размера текстового поля по вертикали */
+}
+
+.order-details-modal-body .submit-order-details {
+  background: #ff6b00;
+  color: #000;
+  padding: 15px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s ease;
+  font-size: 16px;
+}
+
+.order-details-modal-body .submit-order-details:hover {
+  background: #ff5500;
+  transform: scale(1.02);
+}
+
+/* Адаптивность для модального окна деталей заказа */
+@media (max-width: 480px) {
+  .order-details-modal {
+    width: 95%;
+  }
+}
+
+/* Модальное окно подтверждения возраста */
+.age-verification-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.age-verification-overlay.active {
+    display: block;
+}
+
+.age-verification-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(44, 44, 44, 0.95);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    text-align: center;
+    min-width: 300px;
+    color: #fff;
+    border: 2px solid #ff6b00;
+}
+
+.age-verification-modal.active {
+    display: block;
+}
+
+.age-verification-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.age-verification-content h2 {
+    margin: 0;
+    color: #ff6b00;
+    font-size: 24px;
+}
+
+.age-verification-content p {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+}
+
+.age-verification-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.age-verification-buttons button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: transform 0.2s ease, background-color 0.3s;
+}
+
+.age-verification-buttons button:hover {
+    transform: scale(1.05);
+}
+
+#confirmAgeBtn {
+    background-color: #ff6b00;
+    color: #000;
+}
+
+#confirmAgeBtn:hover {
+    background-color: #ff5500;
+}
+
+#denyAgeBtn {
+    background-color: #333;
+    color: #fff;
+    border: 2px solid #ff6b00;
+}
+
+#denyAgeBtn:hover {
+    background-color: #444;
+}
+
+.age-verification-logo {
+    margin-bottom: 20px;
+}
+
+.age-verification-logo img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+}
